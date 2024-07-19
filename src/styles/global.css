@@ -673,14 +673,14 @@ h5 {
 }
 
 #hero {
-  background-image: url('../loopstudios/desktop/image-hero.jpg');
+  background-image: url('/loopstudios/desktop/image-hero.jpg');
   background-repeat: no-repeat;
   background-size: cover;
 }
 
 @media (max-width: 576px) {
   #hero {
-    background-image: url('../loopstudios/mobile/image-hero.jpg');
+    background-image: url('/loopstudios/mobile/image-hero.jpg');
     background-position: center;
   }
 }

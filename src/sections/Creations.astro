@@ -1,0 +1,97 @@
+---
+type Creation = {
+  name: string;
+  desktopImg: string;
+  mobileImg: string;
+};
+
+const creations: Creation[] = [
+  {
+    name: "Deep Earth",
+    desktopImg: "/desktop/image-deep-earth.jpg",
+    mobileImg: "/mobile/image-deep-earth.jpg",
+  },
+  {
+    name: "Night Arcade",
+    desktopImg: "/desktop/image-night-arcade.jpg",
+    mobileImg: "/mobile/image-night-arcade.jpg",
+  },
+  {
+    name: "Soccer Team VR",
+    desktopImg: "/desktop/image-soccer-team.jpg",
+    mobileImg: "/mobile/image-soccer-team.jpg",
+  },
+  {
+    name: "The Grid",
+    desktopImg: "/desktop/image-grid.jpg",
+    mobileImg: "/mobile/image-grid.jpg",
+  },
+  {
+    name: "From up above VR",
+    desktopImg: "/desktop/image-from-above.jpg",
+    mobileImg: "/mobile/image-from-above.jpg",
+  },
+  {
+    name: "Pocket Borealis",
+    desktopImg: "/desktop/image-pocket-borealis.jpg",
+    mobileImg: "/mobile/image-pocket-borealis.jpg",
+  },
+  {
+    name: "The Curiosity",
+    desktopImg: "/desktop/image-curiosity.jpg",
+    mobileImg: "/mobile/image-curiosity.jpg",
+  },
+  {
+    name: "Make it fisheye",
+    desktopImg: "/desktop/image-fisheye.jpg",
+    mobileImg: "/mobile/image-fisheye.jpg",
+  },
+];
+---
+
+<section id="creations">
+  <div class="container max-w-6xl mx-auto my-32 px-6 text-gray-900 md:px-0">
+    <div class="flex justify-center mb-20 md:justify-between">
+      <h2 class="text-4xl text-center uppercase md:text-left md:text-5xl">
+        Our Creations
+      </h2>
+
+      <button class="hidden btn md:block">See All</button>
+    </div>
+    <div class="item-container">
+      {
+        creations.slice(0, 4).map((creation) => (
+          <div class="group item">
+            <img
+              src={creation.desktopImg}
+              alt=""
+              class="hidden w-full duration-200 md:block group-hover:scale-110"
+            />
+            <img src={creation.mobileImg} alt="" class="w-full md:hidden" />
+            <div class="item-gradient" />
+            <h5>{creation.name}</h5>
+          </div>
+        ))
+      }
+    </div>
+    <div class="item-container mt-10">
+      {
+        creations.slice(4, 8).map((creation) => (
+          <div class="group item">
+            <img
+              src={creation.desktopImg}
+              alt=""
+              class="hidden w-full duration-200 md:block group-hover:scale-110"
+            />
+            <img src={creation.mobileImg} alt="" class="w-full md:hidden" />
+            <div class="item-gradient" />
+            <h5>{creation.name}</h5>
+          </div>
+        ))
+      }
+    </div>
+    <div class="flex justify-center mt-10 md:hidden">
+      <button class="btn w-full md:hidden">See All</button>
+    </div>
+  </div>
+</section>

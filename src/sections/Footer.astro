@@ -1,0 +1,50 @@
+---
+type SocialIcon = {
+    name: string;
+  imgSrc: string;
+  href: string;
+};
+
+const socialIcons: SocialIcon[] = [
+  { name: "Facebook", imgSrc: "/icon-facebook.svg", href: "#" },
+  { name: "Twitter", imgSrc: "/icon-twitter.svg", href: "#" },
+  { name: "Pinterest", imgSrc: "/icon-pinterest.svg", href: "#" },
+  { name: "Instagram", imgSrc: "/icon-instagram.svg", href: "#" },
+];
+---
+
+<footer class="bg-black">
+  <div class="container max-w-6xl py-10 mx-auto">
+    <div
+      class="flex flex-col items-center mb-8 space-y-6 md:flex-row md:space-y-0 md:justify-between md:items-start"
+    >
+      <div
+        class="flex flex-col items-center space-y-8 md:items-start md:space-y-4"
+      >
+        <div class="h-8">
+          <img src="/logo.svg" alt="" class="w-44 md:ml-3" />
+        </div>
+      </div>
+      <div
+        class="flex flex-col items-start justify-between space-y-4 text-gray-500"
+      >
+        <div
+          class="flex items-center justify-center mx-auto space-x-4 md:justify-end md:mx-0"
+        >
+          {
+            socialIcons.map((socialIcon) => (
+              <div class="h-8 group">
+                <a href={socialIcon.href}>
+                  <img src={socialIcon.imgSrc} aria-label={socialIcon.name} class="h-6" />
+                </a>
+              </div>
+            ))
+          }
+        </div>
+        <div class="font-bold">
+          &copy; 2024 Loopstudios. All Rights Reserved
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

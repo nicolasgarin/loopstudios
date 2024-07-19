@@ -26,6 +26,14 @@ const navElements: NavElements[] = [
             </div>
           ))
         }
+      <rux-switch slot="right-side" id="theme-switch">
+        <rux-icon
+        class="text-white"
+          id="theme-icon"
+          slot="label"
+          icon="brightness-3"
+          size="small"></rux-icon>
+      </rux-switch>
       </div>
       <div class="md:hidden">
         <button
@@ -52,14 +60,54 @@ const navElements: NavElements[] = [
       }
     </div>
     <div
-      class="max-w-lg mt-32 mb-32 p-4 font-sans text-4xl text-white uppercase border-2 md:p-10 md:m-32 md:mx-0 md:text-6xl"
+      class="max-w-lg mt-32 mb-32 p-4 font-sans rounded-lg text-4xl text-white uppercase border-2 md:p-10 md:m-32 md:mx-0 md:text-6xl"
     >
       Impressive Experiences That Deliver
     </div>
   </div>
 </section>
-
 <script>
+  const body = document.querySelector("body");
+  const themeSwitch: any = document.getElementById("theme-switch");
+  const themeIcon: any = document.getElementById("theme-icon");
+  const darkIcon = "brightness-3";
+  const darkTheme = "dark";
+  const lightIcon = "wb-sunny";
+  const lightTheme = "light";
+  const themeName = "astro-theme";
+  const themePreference = window.localStorage.getItem(themeName);
+
+  if (themePreference) {
+    const preference = JSON.parse(themePreference);
+    if (body) {
+      body.className = preference.class;
+    }
+    if (themeIcon) {
+      themeIcon.icon = preference.icon;
+    }
+    themeSwitch.checked = preference.icon === lightIcon;
+  }
+
+  if (themeSwitch) {
+    themeSwitch.addEventListener("click", (e: any) => {
+      if (!e.target.checked) {
+        const preference = { class: lightTheme, icon: lightIcon };
+        window.localStorage.setItem(themeName, JSON.stringify(preference));
+        if (body) {
+          body.className = lightTheme;
+        }
+        themeIcon.icon = lightIcon;
+        return;
+      }
+      const preference = { class: darkTheme, icon: darkIcon };
+      window.localStorage.setItem(themeName, JSON.stringify(preference));
+      if (body) {
+        body.className = darkTheme;
+      }
+      themeIcon.icon = darkIcon;
+    });
+  }
+
   const btn = document.getElementById("menu-btn");
   const menu = document.getElementById("menu");
   if (btn) {
